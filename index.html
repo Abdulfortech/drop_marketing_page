@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drop Services App - Get 50% Off</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome CDN for copy icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    img.logo {
+      width: 150px;
+      margin-bottom: 20px;
+      border-radius: 100%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #fc4103;
+    }
+
+    p.subtitle {
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+
+    .store-badges img {
+      width: 180px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .coupon-container {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ff3b3b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .copy-btn {
+      background: #fc4103;
+      border: none;
+      color: #fff;
+      padding: 8px 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.3s;
+    }
+
+    .copy-btn:hover {
+      background: #073d85;
+    }
+
+    @media (max-width: 500px) {
+      h1 { font-size: 1.5rem; }
+      .store-badges img { width: 140px; margin: 8px; }
+      .coupon-container { font-size: 18px; }
+      .copy-btn { font-size: 14px; padding: 6px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <img src="https://dropservices.ng/assets/images/logo.png" alt="Drop Services Logo" class="logo">
+  <h1>Get the Drop Services App!</h1>
+  <p class="subtitle">Scan the QR code or click below to download the app and enjoy 50% off your first service!</p>
+
+  <!-- <div class="coupon-container">
+    Use coupon code : <span id="coupon-code">HALFOFF50</span>
+    <button class="copy-btn" onclick="copyCoupon()">
+      <i class="fas fa-copy"></i>
+    </button>
+  </div> -->
+
+  <div class="store-badges">
+    <a id="ios-link" href="#"><img src="https://dropservices.ng/assets/images/ios-store.png" alt="Download on the App Store"></a>
+    <a id="android-link" href="#"><img src="https://dropservices.ng/assets/images/android-store.png" alt="Get it on Google Play"></a>
+  </div>
+
+  
+
+  <script>
+    // const coupon = "HALFOFF50";
+    // document.getElementById("coupon-code").innerText = coupon;
+
+    // function copyCoupon() {
+    //   navigator.clipboard.writeText(coupon).then(() => {
+    //     alert("Coupon code copied to clipboard!");
+    //   }).catch(err => {
+    //     alert("Failed to copy coupon code.");
+    //   });
+    // }
+
+    // App store links
+    const iosLink = "https://apps.apple.com/app/idYOUR_APP_ID";
+    const androidLink = "https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME";
+
+    // Detect device
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/android/i.test(userAgent)) {
+      document.getElementById("android-link").href = androidLink;
+      document.getElementById("ios-link").style.display = "none";
+    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      document.getElementById("ios-link").href = iosLink;
+      document.getElementById("android-link").style.display = "none";
+    } else {
+      document.getElementById("ios-link").href = iosLink;
+      document.getElementById("android-link").href = androidLink;
+    }
+  </script>
+</body>
+</html>
